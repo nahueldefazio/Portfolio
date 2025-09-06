@@ -108,28 +108,7 @@
             }
         }
         
-        /* Animación suave para el menú móvil */
-        #mobileMenu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 40;
-            transform: translateY(-100%);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        #mobileMenu.translate-y-0 {
-            transform: translateY(0) !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-            display: block !important;
-        }
-        
-        /* Estilos para el nuevo navbar */
+        /* Estilos para el nuevo header */
         .nav-link {
             position: relative;
             overflow: hidden;
@@ -150,6 +129,29 @@
             left: 100%;
         }
         
+        /* Animación suave para el menú móvil */
+        #mobileMenu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 40;
+            transform: translateY(-100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            visibility: hidden;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        #mobileMenu.translate-y-0 {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: block !important;
+        }
+        
         /* Mejoras para el botón hamburguesa */
         #mobileMenuBtn {
             min-width: 3rem;
@@ -167,6 +169,19 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.2), transparent);
             transition: left 0.5s;
+        }
+        
+        #mobileMenuBtn:hover::before {
+            left: 100%;
+        }
+        
+        #mobileMenuBtn:hover {
+            transform: scale(1.05);
+        }
+        
+        #mobileMenuBtn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.3);
         }
         
         #mobileMenuBtn:hover::before {
@@ -308,7 +323,7 @@
 <header id="header" class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-navy-blue/95 via-navy-blue/90 to-navy-blue/95 backdrop-blur-xl transition-all duration-500 border-b border-light-blue/20 shadow-2xl shadow-navy-blue/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 sm:h-18 lg:h-20">
-            <!-- Logo con efecto glow -->
+            <!-- Logo -->
             <a href="#" class="flex items-center group relative">
                 <div class="absolute inset-0 bg-light-blue/20 rounded-full blur-lg scale-110 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                 <div class="relative z-10 flex items-center space-x-3">
@@ -373,60 +388,67 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div class="lg:hidden bg-gradient-to-b from-navy-blue/98 to-navy-blue/95 backdrop-blur-xl border-t border-light-blue/20 transform -translate-y-full transition-all duration-500 ease-in-out shadow-2xl" id="mobileMenu">
-        <div class="px-6 pt-20 pb-8 space-y-2">
-            <a href="#about" class="block text-gray hover:text-light-blue transition-all duration-300 py-4 px-6 rounded-xl hover:bg-light-blue/10 group border border-transparent hover:border-light-blue/20">
-                <span class="flex items-center space-x-4">
-                    <div class="w-10 h-10 bg-light-blue/10 rounded-lg flex items-center justify-center group-hover:bg-light-blue/20 transition-all duration-300">
-                        <i class="fas fa-user text-light-blue"></i>
+    <div class="lg:hidden bg-gradient-to-br from-navy-blue/98 via-navy-blue/95 to-dark-blue/98 backdrop-blur-xl border-t border-light-blue/20 transform -translate-y-full transition-all duration-500 ease-in-out shadow-2xl relative overflow-hidden" id="mobileMenu">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 bg-gradient-to-r from-light-blue/5 via-transparent to-light-blue/5"></div>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-light-blue/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-light-blue/5 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-light-blue/3 rounded-full blur-2xl animate-pulse-slow" style="animation-delay: 4s;"></div>
+        
+        <!-- Content -->
+        <div class="px-4 pt-16 pb-8 space-y-1 relative z-10">
+            <a href="#about" class="block text-gray hover:text-light-blue transition-all duration-300 py-3 px-4 rounded-xl hover:bg-light-blue/10 group border border-transparent hover:border-light-blue/20 backdrop-blur-sm hover:backdrop-blur-md">
+                <span class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-light-blue/10 rounded-lg flex items-center justify-center group-hover:bg-light-blue/20 transition-all duration-300">
+                        <i class="fas fa-user text-light-blue text-sm"></i>
                     </div>
                     <div>
-                        <div class="font-medium text-lg">Sobre Mí</div>
-                        <div class="text-sm text-gray/70">Conoce mi historia</div>
+                        <div class="font-medium text-base">Sobre Mí</div>
+                        <div class="text-xs text-gray/70">Conoce mi historia</div>
                     </div>
                 </span>
             </a>
-            <a href="#skills" class="block text-gray hover:text-light-blue transition-all duration-300 py-4 px-6 rounded-xl hover:bg-light-blue/10 group border border-transparent hover:border-light-blue/20">
-                <span class="flex items-center space-x-4">
-                    <div class="w-10 h-10 bg-light-blue/10 rounded-lg flex items-center justify-center group-hover:bg-light-blue/20 transition-all duration-300">
-                        <i class="fas fa-code text-light-blue"></i>
+            <a href="#skills" class="block text-gray hover:text-light-blue transition-all duration-300 py-3 px-4 rounded-xl hover:bg-light-blue/10 group border border-transparent hover:border-light-blue/20 backdrop-blur-sm hover:backdrop-blur-md">
+                <span class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-light-blue/10 rounded-lg flex items-center justify-center group-hover:bg-light-blue/20 transition-all duration-300">
+                        <i class="fas fa-code text-light-blue text-sm"></i>
                     </div>
                     <div>
-                        <div class="font-medium text-lg">Habilidades</div>
-                        <div class="text-sm text-gray/70">Tecnologías que domino</div>
+                        <div class="font-medium text-base">Habilidades</div>
+                        <div class="text-xs text-gray/70">Tecnologías que domino</div>
                     </div>
                 </span>
             </a>
-            <a href="#projects" class="block text-gray hover:text-light-blue transition-all duration-300 py-4 px-6 rounded-xl hover:bg-light-blue/10 group border border-transparent hover:border-light-blue/20">
-                <span class="flex items-center space-x-4">
-                    <div class="w-10 h-10 bg-light-blue/10 rounded-lg flex items-center justify-center group-hover:bg-light-blue/20 transition-all duration-300">
-                        <i class="fas fa-briefcase text-light-blue"></i>
+            <a href="#projects" class="block text-gray hover:text-light-blue transition-all duration-300 py-3 px-4 rounded-xl hover:bg-light-blue/10 group border border-transparent hover:border-light-blue/20 backdrop-blur-sm hover:backdrop-blur-md">
+                <span class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-light-blue/10 rounded-lg flex items-center justify-center group-hover:bg-light-blue/20 transition-all duration-300">
+                        <i class="fas fa-briefcase text-light-blue text-sm"></i>
                     </div>
                     <div>
-                        <div class="font-medium text-lg">Proyectos</div>
-                        <div class="text-sm text-gray/70">Mi trabajo reciente</div>
+                        <div class="font-medium text-base">Proyectos</div>
+                        <div class="text-xs text-gray/70">Mi trabajo reciente</div>
                     </div>
                 </span>
             </a>
-            <a href="#curriculum" class="block text-gray hover:text-light-blue transition-all duration-300 py-4 px-6 rounded-xl hover:bg-light-blue/10 group border border-transparent hover:border-light-blue/20">
-                <span class="flex items-center space-x-4">
-                    <div class="w-10 h-10 bg-light-blue/10 rounded-lg flex items-center justify-center group-hover:bg-light-blue/20 transition-all duration-300">
-                        <i class="fas fa-file-pdf text-light-blue"></i>
+            <a href="#curriculum" class="block text-gray hover:text-light-blue transition-all duration-300 py-3 px-4 rounded-xl hover:bg-light-blue/10 group border border-transparent hover:border-light-blue/20 backdrop-blur-sm hover:backdrop-blur-md">
+                <span class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-light-blue/10 rounded-lg flex items-center justify-center group-hover:bg-light-blue/20 transition-all duration-300">
+                        <i class="fas fa-file-pdf text-light-blue text-sm"></i>
                     </div>
                     <div>
-                        <div class="font-medium text-lg">Curriculum</div>
-                        <div class="text-sm text-gray/70">Descarga mi CV</div>
+                        <div class="font-medium text-base">Curriculum</div>
+                        <div class="text-xs text-gray/70">Descarga mi CV</div>
                     </div>
                 </span>
             </a>
-            <a href="#contact" class="block text-gray hover:text-light-blue transition-all duration-300 py-4 px-6 rounded-xl hover:bg-light-blue/10 group border border-transparent hover:border-light-blue/20">
-                <span class="flex items-center space-x-4">
-                    <div class="w-10 h-10 bg-light-blue/10 rounded-lg flex items-center justify-center group-hover:bg-light-blue/20 transition-all duration-300">
-                        <i class="fas fa-envelope text-light-blue"></i>
+            <a href="#contact" class="block text-gray hover:text-light-blue transition-all duration-300 py-3 px-4 rounded-xl hover:bg-light-blue/10 group border border-transparent hover:border-light-blue/20 backdrop-blur-sm hover:backdrop-blur-md">
+                <span class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-light-blue/10 rounded-lg flex items-center justify-center group-hover:bg-light-blue/20 transition-all duration-300">
+                        <i class="fas fa-envelope text-light-blue text-sm"></i>
                     </div>
                     <div>
-                        <div class="font-medium text-lg">Contacto</div>
-                        <div class="text-sm text-gray/70">Hablemos</div>
+                        <div class="font-medium text-base">Contacto</div>
+                        <div class="text-xs text-gray/70">Hablemos</div>
                     </div>
                 </span>
             </a>
