@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="160" viewBox="0 0 480 160">
+  <rect width="100%" height="100%" fill="#0a192f" rx="10"></rect>
+  <!-- N -->
+  <g transform="translate(34,24)" fill="none" stroke="#00E5FF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 112 V0 L56 112 V0"></path>
+  </g>
+  <!-- Lines connecting like traces -->
+  <g stroke="#00E5FF" stroke-width="3" stroke-linecap="round">
+    <path d="M120 40 H200"></path>
+    <circle cx="120" cy="40" r="4" fill="#00E5FF"></circle>
+    <circle cx="200" cy="40" r="4" fill="#00E5FF"></circle>
+  </g>
+  <!-- D -->
+  <g transform="translate(220,24)" fill="none" stroke="#7C3AED" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 0 V112 H36 A28 28 0 0 0 36 0 Z"></path>
+  </g>
+  <!-- F -->
+  <g transform="translate(320,24)" fill="none" stroke="#10B981" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 0 V112 M0 0 H56 M0 56 H44"></path>
+  </g>
+  <!-- small nodes -->
+  <circle cx="260" cy="110" r="3" fill="#FFDD57"></circle>
+  <circle cx="360" cy="60" r="3" fill="#FFDD57"></circle>
+</svg>

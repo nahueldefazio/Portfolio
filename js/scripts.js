@@ -1,80 +1,140 @@
 // Mobile Menu
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const mobileMenu = document.getElementById('mobileMenu');
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const hamburgerLines = [
+        document.getElementById('hamburger-line-1'),
+        document.getElementById('hamburger-line-2'),
+        document.getElementById('hamburger-line-3')
+    ];
 
-mobileMenuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-    mobileMenuBtn.innerHTML = mobileMenu.classList.contains('active') ?
-        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-});
+    let isMenuOpen = false;
 
-// Cerrar menú al hacer clic en un enlace
-document.querySelectorAll('.mobile-nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-    });
-});
+    // Debug: verificar que los elementos existen
+    console.log('Mobile Menu Button:', mobileMenuBtn);
+    console.log('Mobile Menu:', mobileMenu);
+    console.log('Hamburger Lines:', hamburgerLines);
 
-// Scroll header effect
-window.addEventListener('scroll', () => {
-    const header = document.getElementById('header');
-    if (window.scrollY > 50) {
-        header.classList.add('header-scrolled');
-    } else {
-        header.classList.remove('header-scrolled');
+    // Verificar que todos los elementos existen
+    if (!mobileMenuBtn || !mobileMenu || !hamburgerLines[0] || !hamburgerLines[1] || !hamburgerLines[2]) {
+        console.error('Elementos del menú móvil no encontrados');
+        return;
     }
-});
 
-// Activar enlace de navegación según scroll
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-link');
+    // Función para animar el botón hamburguesa
+    function animateHamburger() {
+        if (isMenuOpen) {
+            // Animación para cerrar (X)
+            hamburgerLines[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+            hamburgerLines[1].style.opacity = '0';
+            hamburgerLines[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+        } else {
+            // Animación para abrir (hamburguesa)
+            hamburgerLines[0].style.transform = 'rotate(0deg) translate(0px, 0px)';
+            hamburgerLines[1].style.opacity = '1';
+            hamburgerLines[2].style.transform = 'rotate(0deg) translate(0px, 0px)';
+        }
+    }
 
-window.addEventListener('scroll', () => {
-    let current = '';
+    // Función para abrir/cerrar el menú
+    function toggleMobileMenu() {
+        console.log('Toggle menu clicked, current state:', isMenuOpen);
+        isMenuOpen = !isMenuOpen;
+        
+        if (isMenuOpen) {
+            mobileMenu.classList.remove('-translate-y-full');
+            mobileMenu.classList.add('translate-y-0');
+            document.body.classList.add('menu-open'); // Prevenir scroll del body
+            console.log('Menu opened');
+        } else {
+            mobileMenu.classList.remove('translate-y-0');
+            mobileMenu.classList.add('-translate-y-full');
+            document.body.classList.remove('menu-open'); // Restaurar scroll del body
+            console.log('Menu closed');
+        }
+        
+        animateHamburger();
+    }
 
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
+    // Event listener para el botón del menú
+    mobileMenuBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Hamburger button clicked');
+        toggleMobileMenu();
+    });
 
-        if (pageYOffset >= sectionTop - 300) {
-            current = section.getAttribute('id');
+    // Cerrar menú al hacer clic en un enlace
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (isMenuOpen) {
+                toggleMobileMenu();
+            }
+        });
+    });
+
+    // Cerrar menú al hacer clic fuera de él
+    document.addEventListener('click', (e) => {
+        if (isMenuOpen && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+            toggleMobileMenu();
         }
     });
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
+    // Cerrar menú con la tecla Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isMenuOpen) {
+            toggleMobileMenu();
         }
     });
-});
 
-// Inicializar carrusel de testimonios
-new Glide('.glide', {
-    type: 'carousel',
-    perView: 1,
-    gap: 40,
-    autoplay: 3000
-}).mount();
-
-// Animaciones al cargar la página y al hacer scroll
-document.addEventListener('DOMContentLoaded', () => {
-    // Inicializar animaciones inmediatas
-    const initialAnimations = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-up, .scale-in, .slide-in-bottom');
-
-    initialAnimations.forEach((element) => {
-        // Asegurarse de que las animaciones se muestren correctamente incluso si hay retrasos
-        setTimeout(() => {
-            element.style.visibility = 'visible';
-        }, 100);
+    // Cerrar menú al redimensionar la ventana (si se cambia a desktop)
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024 && isMenuOpen) { // lg breakpoint
+            toggleMobileMenu();
+        }
+    });
+    // Scroll header effect
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        if (window.scrollY > 50) {
+            header.classList.add('shadow-lg', 'shadow-navy-blue/20');
+        } else {
+            header.classList.remove('shadow-lg', 'shadow-navy-blue/20');
+        }
     });
 
+    // Activar enlace de navegación según scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+
+            if (pageYOffset >= sectionTop - 300) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('text-light-blue');
+            link.classList.add('text-gray');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.remove('text-gray');
+                link.classList.add('text-light-blue');
+            }
+        });
+    });
+
+    // Animaciones al cargar la página y al hacer scroll
     // Configurar observador para animaciones al hacer scroll
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
                 observer.unobserve(entry.target);
             }
         });
@@ -83,13 +143,43 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: '0px 0px -100px 0px'
     });
 
-    // Observar todos los elementos con clases de animación
-    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-up, .scale-in, .slide-in-bottom').forEach(element => {
+    // Observar todos los elementos con clases de animación de Tailwind
+    document.querySelectorAll('.animate-fade-in-up, .animate-fade-in-left, .animate-fade-in-right, .animate-scale-in').forEach(element => {
+        // Establecer estado inicial
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        
         observer.observe(element);
     });
 
     // Añadir efecto de flotación a elementos específicos
-    document.querySelectorAll('.project-img, .hero-img').forEach(element => {
-        element.classList.add('float');
+    document.querySelectorAll('img[class*="animate-float"]').forEach(element => {
+        element.classList.add('animate-float');
+    });
+
+    // Smooth scroll para enlaces de navegación
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Efecto de parallax sutil para elementos de fondo
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.absolute');
+        
+        parallaxElements.forEach(element => {
+            const speed = 0.5;
+            element.style.transform = `translateY(${scrolled * speed}px)`;
+        });
     });
 });
