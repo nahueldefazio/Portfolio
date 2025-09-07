@@ -1003,7 +1003,7 @@
                         <span class="px-3 py-1 bg-light-blue/10 text-light-blue text-sm rounded-full border border-light-blue/20">LocalStorage</span>
                     </div>
                     <div class="flex space-x-4">
-                        <a href="https://nahueldefazio.github.io/calculator-app" class="flex items-center text-light-blue hover:text-white transition-colors duration-300 group">
+                        <a href=" https://nahueldefazio.github.io/Tip-Calculator" class="flex items-center text-light-blue hover:text-white transition-colors duration-300 group">
                             <i class="fas fa-external-link-alt mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
                             Demo
                         </a>
@@ -1130,25 +1130,37 @@
             Actualmente estoy buscando nuevas oportunidades. Si tienes un proyecto en mente, necesitas ayuda con algo o simplemente quieres saludar, no dudes en contactarme.
         </p>
 
+            <!-- Opciones de Contacto -->
             <div class="animate-fade-in-up" style="animation-delay: 0.4s;">
-                <a href="mailto:nahuel@ejemplo.com" class="inline-flex items-center px-8 py-4 bg-light-blue text-navy-blue font-semibold rounded-lg hover:bg-light-blue/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-light-blue/25">
-                    <i class="fas fa-envelope mr-3 text-lg"></i>
-                    Envíame un mensaje
-                </a>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <!-- Botón principal - Gmail Web -->
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=defazionahuel@gmail.com&su=Hola%20Nahuel%20-%20Contacto%20desde%20Portfolio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-4 bg-light-blue text-navy-blue font-semibold rounded-lg hover:bg-light-blue/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-light-blue/25">
+                        <i class="fas fa-envelope mr-3 text-lg"></i>
+                        Envíame un mensaje
+                    </a>
+                    
+                    <!-- Botón alternativo - Copiar email -->
+                    <button onclick="copyEmail()" class="inline-flex items-center px-6 py-4 bg-navy-blue/50 backdrop-blur-sm text-light-gray font-semibold rounded-lg hover:bg-navy-blue/70 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-navy-blue/25 border border-light-blue/20 hover:border-light-blue/40">
+                        <i class="fas fa-copy mr-3 text-lg"></i>
+                        Copiar email
+                    </button>
+                </div>
+                
+                <!-- Mensaje informativo -->
+                <p class="text-sm text-gray/70 mt-4 text-center max-w-md mx-auto">
+                    💡 <strong>Tip:</strong> Si no tienes Gmail, puedes copiar mi email y usarlo en tu cliente de correo preferido
+                </p>
             </div>
 
             <!-- Social Links -->
             <div class="flex justify-center space-x-6 pt-8 animate-fade-in-right" style="animation-delay: 0.6s;">
-                <a href="#" class="w-14 h-14 bg-navy-blue/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-light-blue/20 hover:border-light-blue/40 hover:bg-light-blue/10 transition-all duration-300 group">
+                <a href="https://github.com/nahueldefazio" class="w-14 h-14 bg-navy-blue/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-light-blue/20 hover:border-light-blue/40 hover:bg-light-blue/10 transition-all duration-300 group">
                     <i class="fab fa-github text-xl text-gray group-hover:text-light-blue transition-colors duration-300"></i>
                 </a>
-                <a href="#" class="w-14 h-14 bg-navy-blue/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-light-blue/20 hover:border-light-blue/40 hover:bg-light-blue/10 transition-all duration-300 group">
+                <a href="https://www.linkedin.com/in/nahuel-de-fazio/" class="w-14 h-14 bg-navy-blue/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-light-blue/20 hover:border-light-blue/40 hover:bg-light-blue/10 transition-all duration-300 group">
                     <i class="fab fa-linkedin-in text-xl text-gray group-hover:text-light-blue transition-colors duration-300"></i>
                 </a>
-                <a href="#" class="w-14 h-14 bg-navy-blue/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-light-blue/20 hover:border-light-blue/40 hover:bg-light-blue/10 transition-all duration-300 group">
-                    <i class="fab fa-twitter text-xl text-gray group-hover:text-light-blue transition-colors duration-300"></i>
-                </a>
-                <a href="#" class="w-14 h-14 bg-navy-blue/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-light-blue/20 hover:border-light-blue/40 hover:bg-light-blue/10 transition-all duration-300 group">
+                <a href="https://www.instagram.com/nahueldefazio/" class="w-14 h-14 bg-navy-blue/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-light-blue/20 hover:border-light-blue/40 hover:bg-light-blue/10 transition-all duration-300 group">
                     <i class="fab fa-instagram text-xl text-gray group-hover:text-light-blue transition-colors duration-300"></i>
                 </a>
             </div>
@@ -1167,5 +1179,78 @@
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
 <script src="js\scripts.js"></script>
+
+<!-- Función para copiar email -->
+<script>
+function copyEmail() {
+    const email = 'defazionahuel@gmail.com';
+    
+    // Intentar usar la API moderna del portapapeles
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email).then(() => {
+            showCopyNotification('Email copiado al portapapeles! 📧');
+        }).catch(() => {
+            fallbackCopyTextToClipboard(email);
+        });
+    } else {
+        // Fallback para navegadores más antiguos
+        fallbackCopyTextToClipboard(email);
+    }
+}
+
+function fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
+    textArea.style.opacity = "0";
+    
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            showCopyNotification('Email copiado al portapapeles! 📧');
+        } else {
+            showCopyNotification('No se pudo copiar. Email: defazionahuel@gmail.com', 'error');
+        }
+    } catch (err) {
+        showCopyNotification('No se pudo copiar. Email: defazionahuel@gmail.com', 'error');
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+function showCopyNotification(message, type = 'success') {
+    // Crear notificación
+    const notification = document.createElement('div');
+    notification.className = `fixed top-4 right-4 z-50 px-6 py-3 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full ${
+        type === 'success' 
+            ? 'bg-green-500 text-white' 
+            : 'bg-red-500 text-white'
+    }`;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // Animar entrada
+    setTimeout(() => {
+        notification.classList.remove('translate-x-full');
+    }, 100);
+    
+    // Remover después de 3 segundos
+    setTimeout(() => {
+        notification.classList.add('translate-x-full');
+        setTimeout(() => {
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+</script>
 </body>
 </html>
