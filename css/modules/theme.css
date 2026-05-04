@@ -1,0 +1,736 @@
+        /* Variables CSS para temas */
+        :root {
+            /* Tema Oscuro (por defecto) - Cyberpunk */
+            --bg-primary: #050505;
+            --bg-secondary: #0a0a0a;
+            --bg-tertiary: #121212;
+            --text-primary: #ffffff;
+            --text-secondary: #00E6F6;
+            --text-muted: #8892b0;
+            --accent-primary: #FF013C;
+            --accent-secondary: #F8F005;
+            --border-color: rgba(0, 230, 246, 0.2);
+            --shadow-color: rgba(255, 1, 60, 0.2);
+        }
+        
+        [data-theme="light"] {
+            /* Tema Claro */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #e2e8f0;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --accent-primary: #1e40af; /* Azul más oscuro para tema claro */
+            --accent-secondary: #1e3a8a; /* Azul aún más oscuro */
+            --border-color: rgba(30, 64, 175, 0.3); /* Azul más oscuro */
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Aplicar variables a elementos */
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Override del color light-blue para tema claro */
+        [data-theme="light"] .text-light-blue {
+            color: #1e40af !important; /* Azul más oscuro */
+        }
+        
+        [data-theme="light"] .bg-light-blue {
+            background-color: #1e40af !important; /* Azul más oscuro */
+        }
+        
+        [data-theme="light"] .border-light-blue {
+            border-color: #1e40af !important; /* Azul más oscuro */
+        }
+        
+        [data-theme="light"] .shadow-light-blue {
+            box-shadow: 0 0 0 1px #1e40af !important; /* Azul más oscuro */
+        }
+        
+        /* Override de todas las variaciones de light-blue con opacidades */
+        [data-theme="light"] .text-light-blue\/70 {
+            color: rgba(30, 64, 175, 0.7) !important;
+        }
+        
+        [data-theme="light"] .text-light-blue\/50 {
+            color: rgba(30, 64, 175, 0.5) !important;
+        }
+        
+        [data-theme="light"] .bg-light-blue\/20 {
+            background-color: rgba(30, 64, 175, 0.2) !important;
+        }
+        
+        [data-theme="light"] .bg-light-blue\/10 {
+            background-color: rgba(30, 64, 175, 0.1) !important;
+        }
+        
+        [data-theme="light"] .bg-light-blue\/5 {
+            background-color: rgba(30, 64, 175, 0.05) !important;
+        }
+        
+        [data-theme="light"] .border-light-blue\/20 {
+            border-color: rgba(30, 64, 175, 0.2) !important;
+        }
+        
+        [data-theme="light"] .border-light-blue\/10 {
+            border-color: rgba(30, 64, 175, 0.1) !important;
+        }
+        
+        [data-theme="light"] .border-light-blue\/30 {
+            border-color: rgba(30, 64, 175, 0.3) !important;
+        }
+        
+        [data-theme="light"] .border-light-blue\/40 {
+            border-color: rgba(30, 64, 175, 0.4) !important;
+        }
+        
+        [data-theme="light"] .shadow-light-blue\/20 {
+            box-shadow: 0 0 0 1px rgba(30, 64, 175, 0.2) !important;
+        }
+        
+        [data-theme="light"] .shadow-light-blue\/25 {
+            box-shadow: 0 0 0 1px rgba(30, 64, 175, 0.25) !important;
+        }
+        
+        [data-theme="light"] .shadow-light-blue\/40 {
+            box-shadow: 0 0 0 1px rgba(30, 64, 175, 0.4) !important;
+        }
+        
+        /* Hover effects con el nuevo color */
+        [data-theme="light"] .hover\:text-light-blue:hover {
+            color: #1e40af !important;
+        }
+        
+        [data-theme="light"] .hover\:bg-light-blue:hover {
+            background-color: #1e40af !important;
+        }
+        
+        [data-theme="light"] .hover\:border-light-blue:hover {
+            border-color: #1e40af !important;
+        }
+        
+        [data-theme="light"] .hover\:bg-light-blue\/10:hover {
+            background-color: rgba(30, 64, 175, 0.1) !important;
+        }
+        
+        [data-theme="light"] .hover\:bg-light-blue\/20:hover {
+            background-color: rgba(30, 64, 175, 0.2) !important;
+        }
+        
+        [data-theme="light"] .hover\:border-light-blue\/40:hover {
+            border-color: rgba(30, 64, 175, 0.4) !important;
+        }
+        
+        [data-theme="light"] .hover\:shadow-light-blue\/20:hover {
+            box-shadow: 0 0 0 1px rgba(30, 64, 175, 0.2) !important;
+        }
+        
+        [data-theme="light"] .hover\:shadow-light-blue\/25:hover {
+            box-shadow: 0 0 0 1px rgba(30, 64, 175, 0.25) !important;
+        }
+        
+        [data-theme="light"] .hover\:shadow-light-blue\/40:hover {
+            box-shadow: 0 0 0 1px rgba(30, 64, 175, 0.4) !important;
+        }
+        
+        /* Gradientes con el nuevo color */
+        [data-theme="light"] .bg-gradient-to-br.from-light-blue {
+            background-image: linear-gradient(to bottom right, #1e40af, rgba(30, 64, 175, 0.7)) !important;
+        }
+        
+        [data-theme="light"] .bg-gradient-to-r.from-light-blue {
+            background-image: linear-gradient(to right, #1e40af, transparent) !important;
+        }
+        
+        [data-theme="light"] .bg-gradient-to-b.from-light-blue {
+            background-image: linear-gradient(to bottom, #1e40af, transparent) !important;
+        }
+        
+        /* Efectos de glow con el nuevo color */
+        [data-theme="light"] .animate-glow {
+            animation: glow-light-dark 2s ease-in-out infinite alternate !important;
+        }
+        
+        @keyframes glow-light-dark {
+            from {
+                box-shadow: 0 0 20px rgba(30, 64, 175, 0.3) !important;
+            }
+            to {
+                box-shadow: 0 0 30px rgba(30, 64, 175, 0.5) !important;
+            }
+        }
+        
+        /* Tema Claro - Overrides específicos */
+        [data-theme="light"] {
+            /* Fondo principal */
+            background-color: var(--bg-primary) !important;
+        }
+        
+        /* Fondos de secciones */
+        [data-theme="light"] .bg-dark-blue {
+            background-color: var(--bg-secondary) !important;
+        }
+        
+        [data-theme="light"] .bg-navy-blue {
+            background-color: var(--bg-tertiary) !important;
+        }
+        
+        [data-theme="light"] .bg-navy-blue\/50 {
+            background-color: rgba(226, 232, 240, 0.5) !important;
+        }
+        
+        [data-theme="light"] .bg-navy-blue\/30 {
+            background-color: rgba(226, 232, 240, 0.3) !important;
+        }
+        
+        [data-theme="light"] .bg-navy-blue\/10 {
+            background-color: rgba(226, 232, 240, 0.1) !important;
+        }
+        
+        [data-theme="light"] .bg-navy-blue\/5 {
+            background-color: rgba(226, 232, 240, 0.05) !important;
+        }
+        
+        /* Textos */
+        [data-theme="light"] .text-light-gray {
+            color: var(--text-primary) !important;
+        }
+        
+        [data-theme="light"] .text-gray {
+            color: var(--text-secondary) !important;
+        }
+        
+        [data-theme="light"] .text-gray\/70 {
+            color: var(--text-muted) !important;
+        }
+        
+        [data-theme="light"] .text-gray\/60 {
+            color: rgba(100, 116, 139, 0.6) !important;
+        }
+        
+        /* Bordes */
+        [data-theme="light"] .border-light-blue\/20 {
+            border-color: var(--border-color) !important;
+        }
+        
+        [data-theme="light"] .border-light-blue\/10 {
+            border-color: rgba(59, 130, 246, 0.1) !important;
+        }
+        
+        [data-theme="light"] .border-light-blue\/30 {
+            border-color: rgba(59, 130, 246, 0.3) !important;
+        }
+        
+        [data-theme="light"] .border-light-blue\/40 {
+            border-color: rgba(59, 130, 246, 0.4) !important;
+        }
+        
+        /* Sombras */
+        [data-theme="light"] .shadow-2xl {
+            box-shadow: 0 25px 50px -12px var(--shadow-color) !important;
+        }
+        
+        [data-theme="light"] .shadow-xl {
+            box-shadow: 0 20px 25px -5px var(--shadow-color) !important;
+        }
+        
+        [data-theme="light"] .shadow-lg {
+            box-shadow: 0 10px 15px -3px var(--shadow-color) !important;
+        }
+        
+        /* Gradientes de fondo */
+        [data-theme="light"] .bg-gradient-to-r {
+            background-image: linear-gradient(to right, var(--bg-secondary), var(--bg-tertiary)) !important;
+        }
+        
+        [data-theme="light"] .bg-gradient-to-b {
+            background-image: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary)) !important;
+        }
+        
+        [data-theme="light"] .bg-gradient-to-br {
+            background-image: linear-gradient(to bottom right, var(--bg-secondary), var(--bg-tertiary)) !important;
+        }
+        
+        /* Efectos de hover */
+        [data-theme="light"] .hover\:bg-light-blue\/10:hover {
+            background-color: rgba(59, 130, 246, 0.1) !important;
+        }
+        
+        [data-theme="light"] .hover\:bg-light-blue\/20:hover {
+            background-color: rgba(59, 130, 246, 0.2) !important;
+        }
+        
+        [data-theme="light"] .hover\:bg-navy-blue\/70:hover {
+            background-color: rgba(226, 232, 240, 0.7) !important;
+        }
+        
+        /* Cards y contenedores */
+        [data-theme="light"] .backdrop-blur-sm {
+            background-color: rgba(255, 255, 255, 0.8) !important;
+        }
+        
+        [data-theme="light"] .backdrop-blur-xl {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        /* Efectos de fondo */
+        [data-theme="light"] .bg-light-blue\/5 {
+            background-color: rgba(59, 130, 246, 0.05) !important;
+        }
+        
+        [data-theme="light"] .bg-light-blue\/10 {
+            background-color: rgba(59, 130, 246, 0.1) !important;
+        }
+        
+        [data-theme="light"] .bg-light-blue\/20 {
+            background-color: rgba(59, 130, 246, 0.2) !important;
+        }
+        
+        /* Efectos de blur */
+        [data-theme="light"] .blur-3xl {
+            filter: blur(64px) !important;
+        }
+        
+        [data-theme="light"] .blur-2xl {
+            filter: blur(40px) !important;
+        }
+        
+        /* Header específico */
+        [data-theme="light"] #header {
+            background: linear-gradient(to right, rgba(248, 250, 252, 0.95), rgba(226, 232, 240, 0.9), rgba(248, 250, 252, 0.95)) !important;
+            border-bottom-color: rgba(59, 130, 246, 0.2) !important;
+        }
+        
+        /* Hero section */
+        [data-theme="light"] .hero-bg {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%) !important;
+        }
+        
+        /* Cards de proyectos */
+        [data-theme="light"] .project-card {
+            background-color: var(--bg-secondary) !important;
+            border-color: var(--border-color) !important;
+        }
+        
+        [data-theme="light"] .project-card:hover {
+            background-color: var(--bg-tertiary) !important;
+            box-shadow: 0 20px 25px -5px var(--shadow-color) !important;
+        }
+        
+        /* Skills section */
+        [data-theme="light"] .skill-card {
+            background-color: var(--bg-secondary) !important;
+            border-color: var(--border-color) !important;
+        }
+        
+        [data-theme="light"] .skill-card:hover {
+            background-color: var(--bg-tertiary) !important;
+        }
+        
+        /* Contact section */
+        [data-theme="light"] .contact-card {
+            background-color: var(--bg-secondary) !important;
+            border-color: var(--border-color) !important;
+        }
+        
+        /* Curriculum section */
+        [data-theme="light"] .curriculum-card {
+            background-color: var(--bg-secondary) !important;
+            border-color: var(--border-color) !important;
+        }
+        
+        /* About section */
+        [data-theme="light"] .about-content {
+            background-color: var(--bg-secondary) !important;
+        }
+        
+        /* Profile image frames */
+        [data-theme="light"] .profile-frame {
+            background-color: var(--bg-tertiary) !important;
+            border-color: var(--border-color) !important;
+        }
+        
+        /* Tech icons background */
+        [data-theme="light"] .tech-icon-bg {
+            background-color: var(--bg-tertiary) !important;
+        }
+        
+        /* Floating elements */
+        [data-theme="light"] .floating-element {
+            background-color: rgba(59, 130, 246, 0.1) !important;
+        }
+        
+        /* Mobile menu */
+        [data-theme="light"] #mobileMenu {
+            background: linear-gradient(to bottom right, rgba(248, 250, 252, 0.98), rgba(226, 232, 240, 0.95), rgba(248, 250, 252, 0.98)) !important;
+            border-top-color: rgba(59, 130, 246, 0.2) !important;
+        }
+        
+        /* Navigation links */
+        [data-theme="light"] .nav-link {
+            color: var(--text-secondary) !important;
+        }
+        
+        [data-theme="light"] .nav-link:hover {
+            color: var(--accent-primary) !important;
+            background-color: rgba(59, 130, 246, 0.1) !important;
+        }
+        
+        /* Active navigation */
+        [data-theme="light"] .nav-link.active {
+            color: var(--accent-primary) !important;
+            background-color: rgba(59, 130, 246, 0.1) !important;
+        }
+        
+        /* Buttons */
+        [data-theme="light"] .btn-primary {
+            background-color: var(--accent-primary) !important;
+            color: white !important;
+        }
+        
+        [data-theme="light"] .btn-primary:hover {
+            background-color: var(--accent-secondary) !important;
+        }
+        
+        [data-theme="light"] .btn-secondary {
+            background-color: var(--bg-tertiary) !important;
+            color: var(--text-primary) !important;
+            border-color: var(--border-color) !important;
+        }
+        
+        [data-theme="light"] .btn-secondary:hover {
+            background-color: var(--bg-secondary) !important;
+        }
+        
+        /* Progress bars */
+        [data-theme="light"] .progress-bar {
+            background-color: var(--accent-primary) !important;
+        }
+        
+        [data-theme="light"] .progress-bg {
+            background-color: var(--bg-tertiary) !important;
+        }
+        
+        /* Social links */
+        [data-theme="light"] .social-link {
+            color: var(--text-secondary) !important;
+        }
+        
+        [data-theme="light"] .social-link:hover {
+            color: var(--accent-primary) !important;
+        }
+        
+        /* Footer */
+        [data-theme="light"] footer {
+            background-color: var(--bg-secondary) !important;
+            border-top-color: var(--border-color) !important;
+        }
+        
+        /* Elementos específicos adicionales */
+        [data-theme="light"] .hero-img-container {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary)) !important;
+        }
+        
+        [data-theme="light"] .profile-img {
+            border-color: var(--border-color) !important;
+            box-shadow: 0 20px 25px -5px var(--shadow-color) !important;
+        }
+        
+        [data-theme="light"] .tech-stack-item {
+            background-color: var(--bg-tertiary) !important;
+            border-color: var(--border-color) !important;
+        }
+        
+        [data-theme="light"] .tech-stack-item:hover {
+            background-color: var(--bg-secondary) !important;
+        }
+        
+        [data-theme="light"] .progress-container {
+            background-color: var(--bg-tertiary) !important;
+        }
+        
+        [data-theme="light"] .progress-fill {
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)) !important;
+        }
+        
+        [data-theme="light"] .floating-tech-icon {
+            background-color: rgba(59, 130, 246, 0.1) !important;
+            border-color: var(--border-color) !important;
+        }
+        
+        [data-theme="light"] .section-title {
+            color: var(--text-primary) !important;
+        }
+        
+        [data-theme="light"] .section-subtitle {
+            color: var(--text-secondary) !important;
+        }
+        
+        [data-theme="light"] .card-title {
+            color: var(--text-primary) !important;
+        }
+        
+        [data-theme="light"] .card-description {
+            color: var(--text-secondary) !important;
+        }
+        
+        [data-theme="light"] .tech-tag {
+            background-color: var(--bg-tertiary) !important;
+            color: var(--text-primary) !important;
+            border-color: var(--border-color) !important;
+        }
+        
+        [data-theme="light"] .tech-tag:hover {
+            background-color: var(--accent-primary) !important;
+            color: white !important;
+        }
+        
+        /* Efectos de fondo específicos */
+        [data-theme="light"] .bg-pattern {
+            background-image: radial-gradient(circle at 1px 1px, var(--border-color) 1px, transparent 0) !important;
+        }
+        
+        [data-theme="light"] .gradient-text {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+        
+        /* Animaciones específicas para tema claro */
+        [data-theme="light"] .animate-glow {
+            animation: glow-light 2s ease-in-out infinite alternate !important;
+        }
+        
+        @keyframes glow-light {
+            from {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3) !important;
+            }
+            to {
+                box-shadow: 0 0 30px rgba(59, 130, 246, 0.5) !important;
+            }
+        }
+        
+        /* Mejoras para el navbar responsivo */
+        @media (max-width: 640px) {
+            #header {
+                padding: 0.5rem 0;
+            }
+            
+            #header .max-w-7xl {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+        
+        /* Estilos para el nuevo header */
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .nav-link:hover::before {
+            left: 100%;
+        }
+        
+        /* Animación suave para el menú móvil */
+        #mobileMenu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 40;
+            transform: translateY(-100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            visibility: hidden;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        #mobileMenu.translate-y-0 {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: block !important;
+        }
+        
+        /* Mejoras para el botón hamburguesa */
+        #mobileMenuBtn {
+            min-width: 3rem;
+            min-height: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #mobileMenuBtn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        #mobileMenuBtn:hover::before {
+            left: 100%;
+        }
+        
+        #mobileMenuBtn:hover {
+            transform: scale(1.05);
+        }
+        
+        #mobileMenuBtn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.3);
+        }
+        
+        #mobileMenuBtn:hover::before {
+            left: 100%;
+        }
+        
+        #mobileMenuBtn:hover {
+            transform: scale(1.05);
+        }
+        
+        #mobileMenuBtn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.3);
+        }
+        
+        /* Asegurar visibilidad del botón hamburguesa en móviles y tablets */
+        @media (max-width: 1023px) {
+            #mobileMenuBtn {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                z-index: 50 !important;
+            }
+            
+            /* Asegurar que el menú esté oculto por defecto */
+            #mobileMenu {
+                transform: translateY(-100%) !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                display: block !important;
+            }
+            
+            /* Asegurar que el menú sea visible cuando esté abierto */
+            #mobileMenu.translate-y-0 {
+                transform: translateY(0) !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                display: block !important;
+            }
+        }
+        
+        /* Ocultar en desktop */
+        @media (min-width: 1024px) {
+            #mobileMenuBtn {
+                display: none !important;
+            }
+            
+            #mobileMenu {
+                display: none !important;
+            }
+        }
+        
+        /* Efectos de scroll para el header */
+        #header.scrolled {
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Efectos de hover mejorados para enlaces del menú móvil */
+        #mobileMenu a {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #mobileMenu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        #mobileMenu a:hover::before {
+            left: 100%;
+        }
+        
+        /* Mejoras para tablets */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            #header nav a {
+                font-size: 0.875rem;
+                padding: 0.5rem 0.75rem;
+            }
+        }
+        
+        /* Mejoras para pantallas muy pequeñas */
+        @media (max-width: 375px) {
+            #header .text-lg {
+                font-size: 1rem;
+            }
+            
+            #mobileMenu {
+                padding: 1rem;
+            }
+            
+            #mobileMenu a {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Mejoras para pantallas grandes */
+        @media (min-width: 1280px) {
+            #header nav {
+                gap: 2rem;
+            }
+            
+            #header nav a {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+        
+        /* Prevenir scroll cuando el menú está abierto */
+        body.menu-open {
+            overflow: hidden;
+        }
+        
+        /* Mejoras de accesibilidad */
+        @media (prefers-reduced-motion: reduce) {
+            #mobileMenu,
+            #mobileMenuBtn span,
+            #header nav a span {
+                transition: none;
+            }
+        }

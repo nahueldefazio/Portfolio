@@ -1,0 +1,133 @@
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: 0;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.btn-primary, .button-49 {
+  min-width: 150px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  background: linear-gradient(45deg, transparent 5%, var(--accent-pink) 5%);
+  border: 0;
+  color: #fff;
+  letter-spacing: 3px;
+  box-shadow: 6px 0px 0px var(--light-blue);
+  outline: transparent;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.btn-primary:after, .button-49:after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+  
+  content: attr(data-text);
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 3%, var(--light-blue) 3%, var(--light-blue) 5%, var(--accent-pink) 5%);
+  text-shadow: -3px -3px 0px var(--accent-yellow), 3px 3px 0px var(--light-blue);
+  clip-path: var(--slice-0);
+}
+
+.btn-primary:hover:after, .button-49:hover:after {
+  animation: 1s glitch;
+  animation-timing-function: steps(2, end);
+}
+
+@media (min-width: 768px) {
+  .btn-primary, .button-49 {
+    min-width: 200px;
+    height: 70px;
+    line-height: 70px;
+  }
+}
+
+.btn-outline {
+    border: 1px solid var(--light-blue);
+    color: var(--light-blue);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background-color: rgba(0, 230, 246, 0.1);
+    box-shadow: 0 0 15px rgba(0, 230, 246, 0.3);
+}
+
+/* Cards */
+.project-card {
+    background-color: rgba(2, 12, 27, 0.7);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    border-color: var(--light-blue);
+}
+
+.skill-category {
+    background-color: rgba(2, 12, 27, 0.7);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.tech-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.8rem;
+    background-color: rgba(100, 255, 218, 0.1);
+    color: var(--light-blue);
+    border-radius: 50px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Effects */
+.cyber-glitch-hover:hover {
+    animation: glitch-text 0.3s cubic-bezier(.25,.46,.45,.94) both infinite;
+}
+
+.underline-effect {
+    position: relative;
+}
+
+.underline-effect::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--light-blue);
+    transition: width 0.3s;
+}
+
+.underline-effect:hover::after {
+    width: 100%;
+}
